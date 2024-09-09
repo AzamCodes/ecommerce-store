@@ -2,6 +2,7 @@
 
 import Button from "@/app/components/ui/Button";
 import { cn } from "@/lib/utils";
+import { Color, Size } from "@/types";
 import { useRouter, useSearchParams } from "next/navigation";
 import qs from "query-string";
 
