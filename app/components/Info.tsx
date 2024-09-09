@@ -4,18 +4,26 @@ import { Product } from "@/types";
 import Currency from "./ui/currency";
 import Button from "./ui/Button";
 import { ShoppingCart } from "lucide-react";
+import useCart from "@/hooks/use-cart";
+import { MouseEventHandler } from "react";
 
 interface InfoProps {
   data: Product;
 }
 
 const Info: React.FC<InfoProps> = ({ data }) => {
+  const cart = useCart(); // Hook should be used inside the component
+
+  const onAddToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.stopPropagation();
+    cart.addItem(data); // Add the product to the cart
+  };
+
   return (
     <div>
       <h1 className="text-3xl font-bold text-gray-900">{data.name}</h1>
       <div className="mt-3 flex items-center justify-between">
         <p className="text-2xl text-gray-900">
-          {" "}
           <Currency value={data?.price} />
         </p>
       </div>
@@ -34,7 +42,10 @@ const Info: React.FC<InfoProps> = ({ data }) => {
         </div>
       </div>
       <div className="mt-10 flex items-center gap-x-3">
-        <Button className="flex items-center gap-x-2">
+        <Button
+          onClick={onAddToCart} // Direct function reference
+          className="flex items-center bg-black text-white gap-x-2"
+        >
           Add To Cart
           <ShoppingCart />
         </Button>

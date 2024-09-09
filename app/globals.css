@@ -7,3 +7,7 @@ body,
 :root {
   height: 100%;
 }
+/* styles.css */
+.btn-default {
+  @apply w-auto rounded-full px-5 py-3 font-semibold transition;
+}

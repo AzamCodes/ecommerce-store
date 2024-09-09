@@ -17,7 +17,10 @@ const Filter: React.FC<FilterProps> = ({ data, name, valueKey }) => {
 
   const selectedValue = searchParams.get(valueKey);
 
+  console.log("Selected Value:", selectedValue); // Debugging
+
   const onClick = (id: string) => {
+    console.log("Clicked ID:", id); // Debugging
     const current = qs.parse(searchParams.toString());
     const query = {
       ...current,
@@ -34,9 +37,10 @@ const Filter: React.FC<FilterProps> = ({ data, name, valueKey }) => {
       { skipNull: true }
     );
 
-    console.log("Navigating to URL:", url); // Add this line for debugging
+    console.log("Navigating to URL:", url); // Debugging
     router.push(url);
   };
+
   return (
     <div className="mb-8">
       <h3 className="text-lg font-semibold">{name}</h3>
@@ -46,8 +50,10 @@ const Filter: React.FC<FilterProps> = ({ data, name, valueKey }) => {
           <div key={filter.id} className="flex items-center">
             <Button
               className={cn(
-                "rounded-md text-sm text-gray-800 p-2 bg-white border border-gray-300",
-                selectedValue === filter.id && "bg-black text-white"
+                "rounded-md text-sm p-2 border border-gray-300",
+                selectedValue === filter.id
+                  ? "bg-black text-white"
+                  : "bg-white text-gray-900"
               )}
               onClick={() => onClick(filter.id)}
             >

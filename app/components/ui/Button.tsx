@@ -8,7 +8,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button
         type={type}
-        className={`w-auto rounded-full bg-black border-transparent px-5 py-3 text-white font-semibold hover:opacity-75 transition ${className}`}
+        className={`btn-default ${className}`}
         ref={ref}
         disabled={disabled}
         {...props}
