@@ -29,3 +29,8 @@ export interface Size {
   name: string;
   value: string;
 }
+export interface Color {
+  id: string;
+  name: string; // Name of the color (e.g., "Red", "Blue")
+  value: string; // Hex code of the color (e.g., "#FF0000" for red)
+}
